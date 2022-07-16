@@ -7,7 +7,7 @@ using namespace std;
 
 typedef unsigned long long ull;
 typedef long long ll;
-typedef double long ld;
+typedef double long ld; 
 
 void solve() {
     ll n; cin >> n;
