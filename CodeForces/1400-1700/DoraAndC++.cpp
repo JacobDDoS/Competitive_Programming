@@ -25,12 +25,14 @@ void solve() {
 
     for (int i=0;i<n;i++) {
         if (i == n-1) {
-            largestBreak = max(largestBreak, greatestCommonDivisor-nums[i]);
+            largestBreak = max(largestBreak, (greatestCommonDivisor-nums[i])+nums[0]);
         } else {
             largestBreak = max(largestBreak, nums[i+1]-nums[i]);
         }
     }
 
+    // cout << "Greatest Common Divisor: " << greatestCommonDivisor << endl;
+    // cout << "Largest Break: " << largestBreak << endl;
     cout << greatestCommonDivisor - largestBreak << '\n';
 
 }
