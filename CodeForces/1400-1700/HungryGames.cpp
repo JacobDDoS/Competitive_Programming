@@ -25,8 +25,6 @@ void solve() {
 
         int add = (ptrEnd-s.begin())-1-i;
         ans += add * (1 + dp[i]);
-
-
         dp[i+add+1]+= 1 + dp[i];
 
         // cout << "added: " << 1 << " to " << add+2 << endl;
