@@ -18,18 +18,12 @@ void solve() {
     int add = (ptrEnd-s.begin())-1;
     ans += add;
     dp[add+1]++;
-    // cout << "first add: " << add << endl;
-    // cout << "added: " << 1 << " to " << add+2 << endl;
+
     for (int i=1;i<n;i++) {
         ptrEnd = lower_bound(ptrEnd, s.end(), x+s[i]+1);
-
         int add = (ptrEnd-s.begin())-1-i;
         ans += add * (1 + dp[i]);
         dp[i+add+1]+= 1 + dp[i];
-
-        // cout << "added: " << 1 << " to " << add+2 << endl;
-        // cout << "add: " << add << endl;
-        // cout << "extra: " << add*dp[i] << endl;
     }
 
     cout << ans << endl;
