@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using neamspace std;
+
+class Solution {
+public:
+    vector<int> lexicographicallySmallestArray(vector<int>& nums, int limit) {
+        vector<int> sortedNums(nums.size());
+        for (int i=0;i<nums.size();i++) {
+            sortedNums[i] = nums[i];
+        }
+        sort(sortedNums.begin(), sortedNums.end());
+        vector<int> ans(nums.size());
+        unordered_map<int, int> dsu;
+        unordered_map<int, int> sccToInfo;
+        int sccId = 8000;
+        int firstSCCIndex = 0;
+        dsu[sortedNums[0]] = sccId;
+        
+        for (int i=1;i<nums.size();i++) {
+            if (sortedNums[i] - sortedNums[i-1] <= limit) {
+                dsu[sortedNums[i]] = sccId;
+            } else {
+                sccToInfo[sccId] = firstSCCIndex;
+                firstSCCIndex = i;
+                sccId++;
+                dsu[sortedNums[i]] = sccId;
+            }
+        }
+        sccToInfo[sccId] = firstSCCIndex;
+
+        for (int i=0;i<nums.size();i++) {
+            ans[i] = sortedNums[sccToInfo[dsu[nums[i]]]++];
+        }
+        return ans;
+    }
+};
