@@ -18,9 +18,9 @@ void solve()
             if ((i > 0 && good[i-1]) || (i < n-1 && good[i+1])) {
                 good[i] = true;
                 int ptrL = i-1, ptrR=i+1;
-                while (ptrL > 0 && good[ptrL] == false && nums[ptrL] == itr->first) {
+                while (ptrL >= 0 && good[ptrL] == false && nums[ptrL] == itr->first) {
                     good[ptrL] = true;
-                    ptrL++;
+                    ptrL--;
                 }
                 while (ptrR < n && good[ptrR] == false && nums[ptrR] == itr->first) {
                     good[ptrR] = true;
@@ -31,27 +31,9 @@ void solve()
         for (int i : itr->second) {
             if ((i > 0 && good[i-1]) || (i < n-1 && good[i+1])) {
                 good[i] = true;
-                int ptrL = i-1, ptrR=i+1;
-                while (ptrL > 0 && good[ptrL] == false && nums[ptrL] == itr->first) {
-                    good[ptrL] = true;
-                    ptrL++;
-                }
-                while (ptrR < n && good[ptrR] == false && nums[ptrR] == itr->first) {
-                    good[ptrR] = true;
-                    ptrR++;
-                }
             } else {
                 good[i] = true;
                 ans++;
-                int ptrL = i-1, ptrR=i+1;
-                while (ptrL > 0 && good[ptrL] == false && nums[ptrL] == itr->first) {
-                    good[ptrL] = true;
-                    ptrL++;
-                }
-                while (ptrR < n && good[ptrR] == false && nums[ptrR] == itr->first) {
-                    good[ptrR] = true;
-                    ptrR++;
-                }
             }
         }   
     }
